@@ -10,6 +10,7 @@ namespace FitnessProgramManagementSystem
     {
         static void Main(string[] args)
         {
+            var FitnessProgram = new FitnessProgram()
         }
     }
 }
