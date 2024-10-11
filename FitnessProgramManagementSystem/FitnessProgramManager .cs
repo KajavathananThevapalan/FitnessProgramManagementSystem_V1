@@ -18,7 +18,7 @@ namespace FitnessProgramManagementSystem
 
         }
 
-        public static void CreateFitnessProgram()
+        public void CreateFitnessProgram()
         {
             Console.WriteLine("Enter the FitnessProgramId :");
             var FitnessProgramId = Console.ReadLine();
@@ -29,8 +29,7 @@ namespace FitnessProgramManagementSystem
             Console.WriteLine("Enter the Duration :");
             var Duration = Console.ReadLine();
 
-            Console.WriteLine("Enter the Price :");
-            var Price = Console.ReadLine();
+            var Price = ValidateFitnessProgramPrice();
 
             var fitnessProgram = new FitnessProgram()
             {
@@ -45,7 +44,7 @@ namespace FitnessProgramManagementSystem
             Console.WriteLine("FitnessProgram Added Successfully...");
         }
 
-        public static  ReadFitnessPrograms( )
+        public  ReadFitnessPrograms( )
         {
 
             foreach(var fitnessProgram in FitnessProgramList)
@@ -56,7 +55,7 @@ namespace FitnessProgramManagementSystem
         }
 
 
-        public static void UpdateFitnessProgram()
+        public  void UpdateFitnessProgram()
         {
             Console.WriteLine("Enter the FitnessProgramId :");
             var nFitnessProgramId = Console.ReadLine();
@@ -70,8 +69,7 @@ namespace FitnessProgramManagementSystem
                 Console.WriteLine("Enter the Duration :");
                 var nDuration = Console.ReadLine();
 
-                Console.WriteLine("Enter the Price :");
-                var nPrice = Console.ReadLine();
+                var Price = ValidateFitnessProgramPrice();
 
                 var nfitnessProgram = new FitnessProgram()
                 {
@@ -94,7 +92,7 @@ namespace FitnessProgramManagementSystem
 
         }
 
-        public static void DeleteFitnessProgram()
+        public  void DeleteFitnessProgram()
         {
             Console.WriteLine("Enter the FitnessProgramId :");
             var FitnessProgramId = Console.ReadLine();
@@ -110,6 +108,23 @@ namespace FitnessProgramManagementSystem
                 Console.WriteLine("Invalid FitnessProgramId :");
 
             }
+        }
+
+        public decimal ValidateFitnessProgramPrice()
+        {
+            decimal init = 0;
+            while (true) 
+            {
+                Console.WriteLine("Enter the Price :");
+                var Price = decimal.Parse(Console.ReadLine());
+                if (Price > 0) 
+                {
+                    init = Price;
+                    return init;
+                }
+                Console.WriteLine("Invalid Price.Please Reenter Price... ");
+            }
+            
         }
     }
 }
