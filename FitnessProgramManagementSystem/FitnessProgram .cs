@@ -11,8 +11,19 @@ namespace FitnessProgramManagementSystem
         private string FitnessProgramId { get; set; }
         private string Title { get; set; }
         private string Duration { get; set; }
-        private string price { get; set; }
+        private string Price { get; set; }
 
-        
+        public FitnessProgram(string fitnessProgramId, string title, string duration, string price)
+        {
+            FitnessProgramId = fitnessProgramId;
+            Title = title;
+            Duration = duration;
+            Price = price;
+        }
+
+        public override string ToString() 
+        {
+            return $"FitnessProgramId:{FitnessProgramId} Title: {Title} Duration: {Duration} Price: {Price} ";
+        }
     }
 }
