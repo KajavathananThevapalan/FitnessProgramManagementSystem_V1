@@ -8,13 +8,14 @@ namespace FitnessProgramManagementSystem
 {
     internal class FitnessProgram
     {
-        public string FitnessProgramId { get; set; }
+        public FitnessProgram() { }
+        public int FitnessProgramId { get; set; }
         public string Title { get; set; }
         public string Duration { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public int TotalFitnessPrograms { get; set; }
 
-        public FitnessProgram(string fitnessProgramId, string title, string duration, string price)
+        public FitnessProgram(int fitnessProgramId, string title, string duration, decimal price)
         {
             FitnessProgramId = fitnessProgramId;
             Title = title;
@@ -28,5 +29,9 @@ namespace FitnessProgramManagementSystem
         {
             return $"FitnessProgramId:{FitnessProgramId} Title: {Title} Duration: {Duration} Price: {Price} ";
         }
+
+        public virtual DisplayFitnessProgramInfo(
+
+        )
     }
 }

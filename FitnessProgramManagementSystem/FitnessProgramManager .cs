@@ -10,18 +10,18 @@ namespace FitnessProgramManagementSystem
 {
     internal class FitnessProgramManager
     {
-        public List<FitnessProgram> FitnessProgramList;
+        public List<FitnessProgram> FitnessProgramsList;
 
-        public FitnessProgramManager() {
-            
-            FitnessProgramList = new List<FitnessProgram>();
-
+        public FitnessProgramManager()
+        {
+            FitnessProgramsList = new List<FitnessProgram>();
         }
+
 
         public void CreateFitnessProgram()
         {
-            Console.WriteLine("Enter the FitnessProgramId :");
-            var FitnessProgramId = Console.ReadLine();
+            Console.WriteLine("Enter the FitnessProgram ID :");
+            var FitnessProgramId = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Enter the Title :");
             var Title = Console.ReadLine();
@@ -31,7 +31,7 @@ namespace FitnessProgramManagementSystem
 
             var Price = ValidateFitnessProgramPrice();
 
-            var fitnessProgram = new FitnessProgram()
+            var FitnessProgram = new FitnessProgram()
             {
                 FitnessProgramId = FitnessProgramId,
                 Title = Title,
@@ -39,74 +39,75 @@ namespace FitnessProgramManagementSystem
                 Price = Price
             };
 
-            FitnessProgramList.Add.fitnessProgram;
+            this.FitnessProgramsList.Add(FitnessProgram);
+            Console.WriteLine("Fitness Program Added Successfully");
 
-            Console.WriteLine("FitnessProgram Added Successfully...");
         }
 
-        public  ReadFitnessPrograms( )
+        public void ReadFitnessPrograms()
         {
-
-            foreach(var fitnessProgram in FitnessProgramList)
+            if (FitnessProgramsList != null)
             {
-                return $" FitnessProgramId: {FitnessProgramId} Title: {Title} Duration: {Duration} Price: {Price}" ;
+                foreach (var FitnessProgram in FitnessProgramsList)
+                {
+                    Console.WriteLine(FitnessProgram.ToString());
+                }
+            }else
+            {
+                Console.WriteLine("Data empty");
             }
 
         }
 
 
-        public  void UpdateFitnessProgram()
+        public void UpdateFitnessProgram()
         {
-            Console.WriteLine("Enter the FitnessProgramId :");
-            var nFitnessProgramId = Console.ReadLine();
-            var FindFitnessProgram = FitnessProgramList.Where(f => f.FitnessProgramId == nFitnessProgramId).FirstOrDefault();
-
+            Console.WriteLine("Enter the FitnessProgram ID to be updated :");
+            var FitnessProgramId = int.Parse(Console.ReadLine());
+            var FindFitnessProgram = this.FitnessProgramsList.Where(p => p.FitnessProgramId == FitnessProgramId).FirstOrDefault();
             if (FindFitnessProgram != null)
             {
+
                 Console.WriteLine("Enter the Title :");
                 var nTitle = Console.ReadLine();
 
                 Console.WriteLine("Enter the Duration :");
                 var nDuration = Console.ReadLine();
 
-                var Price = ValidateFitnessProgramPrice();
+                var nPrice = ValidateFitnessProgramPrice();
 
-                var nfitnessProgram = new FitnessProgram()
+                var nFitnessProgram = new FitnessProgram()
                 {
-                    FitnessProgramId = nFitnessProgramId,
+                    FitnessProgramId = FitnessProgramId,
                     Title = nTitle,
                     Duration = nDuration,
                     Price = nPrice
                 };
-                FitnessProgramList.Remove.nfitnessProgram;
-
-                Console.WriteLine("FitnessProgram Updated Successfully...");
-
+                this.FitnessProgramsList.Remove(FindFitnessProgram);
+                this.FitnessProgramsList.Add(nFitnessProgram);
+                Console.WriteLine("Fitness Program Updated Successfully");
             }
             else
             {
-
-                Console.WriteLine("Invalid FitnessProgramId :");
-
+                Console.WriteLine("Invalid FitnessProgram ID");
             }
+
 
         }
 
-        public  void DeleteFitnessProgram()
+        public void DeleteFitnessProgram()
         {
-            Console.WriteLine("Enter the FitnessProgramId :");
-            var FitnessProgramId = Console.ReadLine();
-            var FindFitnessProgram = FitnessProgramList.Find(f => f.FitnessProgramId == FitnessProgramId).FirstOrDefault();
-             
-            if (FindFitnessProgram == null)
+            Console.WriteLine("Enter the FitnessProgram ID to be deleted :");
+            var FitnessProgramId = int.Parse(Console.ReadLine());
+            var FindFitnessProgram = this.FitnessProgramsList.Where(p => p.FitnessProgramId == FitnessProgramId).FirstOrDefault();
+            if (FindFitnessProgram != null)
             {
-                Console.WriteLine("FitnessProgram Deleted Successfully...");
+                this.FitnessProgramsList.Remove(FindFitnessProgram);
+                Console.WriteLine("Fitness Program Deleted Successfully");
             }
             else
             {
-
-                Console.WriteLine("Invalid FitnessProgramId :");
-
+                Console.WriteLine("Invalid FitnessProgram ID");
             }
         }
 

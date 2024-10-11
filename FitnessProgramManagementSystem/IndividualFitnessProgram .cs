@@ -12,5 +12,7 @@ namespace FitnessProgramManagementSystem
         public string SubscriptionType {  get; set; }
 
         public string needPersonalTrainer { get; set; }
+
+        public override 
     }
 }

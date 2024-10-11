@@ -37,18 +37,27 @@ namespace FitnessProgramManagementSystem
 
             switch (UserInput) {
                 case "1":
+                    Console.Clear();
                     manager.CreateFitnessProgram();
+                    Menu();
                     break;
                 case "2":
+                    Console.Clear();
                     manager.ReadFitnessPrograms();
+                    Menu();
                     break;
                 case "3":
+                    Console.Clear();
                     manager.UpdateFitnessProgram();
+                    Menu();
                     break;
                 case "4":
+                    Console.Clear();
                     manager.DeleteFitnessProgram();
+                    Menu();
                     break;
                 case "5":
+                    Console.Clear();
                     Console.WriteLine("Thank You!!! Come Again!!!");
                     return;
                 default:
